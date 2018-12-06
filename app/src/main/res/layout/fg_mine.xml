@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ccc"
+        android:layout_width="match_parent">
+
+    <RelativeLayout
+            android:background="@mipmap/background"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/ivHeader"
+                android:layout_centerInParent="true"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@mipmap/ic_launcher"
+                app:civ_border_width="0dp"
+                app:civ_border_color="#FF000000"/>
+        <TextView
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:text="到期时间:2019-03-05 10:34:24"
+                android:background="#55000000"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                    android:textColor="@color/black"
+                    android:text="开通会员"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <ImageView
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <TextView
+            android:id="@+id/tvLogout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/white"
+            android:background="#c21"
+            android:gravity="center"
+            android:text="注销"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
+</LinearLayout>
