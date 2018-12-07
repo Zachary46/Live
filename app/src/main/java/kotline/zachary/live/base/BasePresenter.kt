@@ -26,15 +26,15 @@ open class BasePresenter<V : BaseView>{
 
     private var view: V? = null
 
-    public fun getView():V{
+    fun getView():V{
         return view!!
     }
 
-    public fun attachView(v: V){
+    fun attachView(v: V){
         this.view = v
     }
 
-    public fun detachView(){
+    fun detachView(){
         this.view = null
     }
 

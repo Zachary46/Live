@@ -33,7 +33,9 @@ import java.io.File
 public class HomeAdapter(layoutResId: Int, data: List<HomeEntity>): BaseQuickAdapter<HomeEntity,BaseViewHolder>(layoutResId, data){
     override fun convert(helper: BaseViewHolder?, item: HomeEntity?) {
         helper?.setText(R.id.tvTitle,item?.name)
-        helper?.setText(R.id.tvNumber,item?.number)
-        Glide.with(mContext).load(item?.img).into(helper?.getView(R.id.ivContent))
+        item?.age?.let {
+            helper?.setText(R.id.tvNumber,item.age.toString())
+        }
+        Glide.with(mContext).load(item?.thumb).into(helper?.getView(R.id.ivContent))
     }
 }

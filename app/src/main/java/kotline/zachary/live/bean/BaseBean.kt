@@ -1,8 +1,4 @@
-package kotline.zachary.live
-
-import android.app.Application
-import kotline.zachary.live.init.InitAlbum
-import kotline.zachary.live.init.InitEasyHttp
+package kotline.zachary.live.bean
 
 /**
  * ┌───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
@@ -21,22 +17,10 @@ import kotline.zachary.live.init.InitEasyHttp
  * └────┴────┴────┴───────────────────────┴────┴────┴────┴────┘└───┴───┴───┘└───────┴───┴───┘
  *
  * Author: Zachary46
- * Time: 2018/12/6
+ * Time: 2018/12/7
  *
  */
-class App : Application(){
-    private lateinit var initList: ArrayList<IAppInit>
-    override fun onCreate() {
-        super.onCreate()
-        initList = ArrayList()
-        initList.add(InitAlbum())
-        initList.add(InitEasyHttp())
-        for (item in initList){
-            item.init(this)
-        }
-    }
-
-    interface IAppInit{
-        fun init(application: Application)
-    }
-}
+data class BaseBean<T>(
+    var info: T,
+    var success: String
+)

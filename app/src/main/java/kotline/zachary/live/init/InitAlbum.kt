@@ -1,8 +1,10 @@
-package kotline.zachary.live
+package kotline.zachary.live.init
 
 import android.app.Application
-import kotline.zachary.live.init.InitAlbum
-import kotline.zachary.live.init.InitEasyHttp
+import com.yanzhenjie.album.Album
+import com.yanzhenjie.album.AlbumConfig
+import kotline.zachary.live.App
+import kotline.zachary.live.view.MediaLoader
 
 /**
  * ┌───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
@@ -21,22 +23,14 @@ import kotline.zachary.live.init.InitEasyHttp
  * └────┴────┴────┴───────────────────────┴────┴────┴────┴────┘└───┴───┴───┘└───────┴───┴───┘
  *
  * Author: Zachary46
- * Time: 2018/12/6
+ * Time: 2018/12/7
  *
  */
-class App : Application(){
-    private lateinit var initList: ArrayList<IAppInit>
-    override fun onCreate() {
-        super.onCreate()
-        initList = ArrayList()
-        initList.add(InitAlbum())
-        initList.add(InitEasyHttp())
-        for (item in initList){
-            item.init(this)
-        }
+class InitAlbum: App.IAppInit {
+    override fun init(application: Application) {
+        Album.initialize(AlbumConfig.newBuilder(application)
+                .setAlbumLoader(MediaLoader())
+                .build())
     }
 
-    interface IAppInit{
-        fun init(application: Application)
-    }
 }

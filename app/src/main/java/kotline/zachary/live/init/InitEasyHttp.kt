@@ -1,8 +1,12 @@
-package kotline.zachary.live
+package kotline.zachary.live.init
 
 import android.app.Application
-import kotline.zachary.live.init.InitAlbum
-import kotline.zachary.live.init.InitEasyHttp
+import com.rayhahah.library.core.EClient
+import com.rayhahah.library.core.EasyClient
+import com.rayhahah.library.http.TYPE
+import com.rayhahah.library.interceptor.HttpLogInterceptor
+import kotline.zachary.live.App
+import java.util.concurrent.TimeUnit
 
 /**
  * ┌───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
@@ -21,22 +25,36 @@ import kotline.zachary.live.init.InitEasyHttp
  * └────┴────┴────┴───────────────────────┴────┴────┴────┴────┘└───┴───┴───┘└───────┴───┴───┘
  *
  * Author: Zachary46
- * Time: 2018/12/6
+ * Time: 2018/12/7
  *
  */
-class App : Application(){
-    private lateinit var initList: ArrayList<IAppInit>
-    override fun onCreate() {
-        super.onCreate()
-        initList = ArrayList()
-        initList.add(InitAlbum())
-        initList.add(InitEasyHttp())
-        for (item in initList){
-            item.init(this)
+class InitEasyHttp: App.IAppInit {
+    override fun init(application: Application) {
+        /**
+         * 构建OkHttpClient
+         * 使用这种方式构建的话，会直接配置成默认使用的OkHttpClient
+         */
+
+        EClient {
+            //配置默认的baseUrl
+            baseUrl = "http://mall.rayhahah.com/"
+            //配置默认的请求类型
+            type = TYPE.METHOD_POST
+            timeUnit = TimeUnit.SECONDS
+            connectTimeout = 10
+            readTimeout = 10
+            writeTimeout = 10
+            interceptors(HttpLogInterceptor())
+            networkInterceptors()
+            retryOnConnectionFailure = true
+            cache = null
+            //配置默认的解析器
+            parser = null
+            //配置全局通用的请求头
+            header = {
+                "custom_head"("rayhahah")
+            }
         }
     }
 
-    interface IAppInit{
-        fun init(application: Application)
-    }
 }

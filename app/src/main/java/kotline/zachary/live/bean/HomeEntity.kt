@@ -1,5 +1,7 @@
 package kotline.zachary.live.bean
 
+import android.icu.text.IDNA
+
 /**
  * ┌───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
  * │Esc│ │ F1│ F2│ F3│ F4│ │ F5│ F6│ F7│ F8│ │ F9│F10│F11│F12│ │P/S│S L│P/B│ ┌┐    ┌┐    ┌┐
@@ -21,7 +23,7 @@ package kotline.zachary.live.bean
  *
  */
 data class HomeEntity(
-    var img: String,
+    var thumb: String,
     var name: String,
-    var number: String
-)
+    var url: String,
+    var age: Int)

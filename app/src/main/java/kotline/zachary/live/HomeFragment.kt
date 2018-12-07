@@ -60,7 +60,8 @@ class HomeFragment : Fragment(){
             var homeEntity = HomeEntity(
                 "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544070168104&di=170d339180f9b9a4271010c3879e1a58&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170523%2F13fe8ccf2c034abb8b077d211e613980_th.jpg",
                 "夜来香",
-                "110"
+                "",
+                26
             )
             list.add(homeEntity)
             Log.i("test", "" + i)
@@ -78,7 +79,7 @@ class HomeFragment : Fragment(){
         var mBanner :Banner = headerView?.findViewById(R.id.banner) as Banner
         var images : ArrayList<String> = ArrayList()
         for (j in 0..list.size-14){
-            images.add(list.get(j).img)
+            images.add(list.get(j).thumb)
         }
         mBanner.setImages(images).setImageLoader(GlideImageLoader()).start()
         mBanner.setOnBannerListener { p->

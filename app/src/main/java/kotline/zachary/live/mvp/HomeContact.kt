@@ -1,6 +1,7 @@
 package kotline.zachary.live.mvp
 import kotline.zachary.live.base.BasePresenter
 import kotline.zachary.live.base.BaseView
+import kotline.zachary.live.bean.HomeEntity
 
 /**
  * ┌───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
@@ -27,7 +28,8 @@ interface HomeContact{
         abstract fun loadData()
     }
 
-    interface View : BaseView{
-        fun loadDataSuccess(s: String)
+    interface View: BaseView{
+        fun loadDataSuccess(s: HomeEntity)
+        fun loadDataFail(s: String)
     }
 }
